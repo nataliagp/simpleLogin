@@ -1,13 +1,12 @@
 package main.java.com;
 
-import org.apache.log4j.BasicConfigurator;
-
+import main.java.com.db.ConnectionDB;
 
 public class Main {
-
+	
 	public static void main(String[] args) {
-		BasicConfigurator.configure();
 		
+		ConnectionDB.getConexion();
 	}
 
 }

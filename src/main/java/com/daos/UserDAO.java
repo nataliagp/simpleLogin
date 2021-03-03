@@ -3,15 +3,15 @@ package main.java.com.daos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-import org.apache.log4j.Logger;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import main.java.com.db.ConnectionDB;
 import main.java.com.entity.User;
 
 public class UserDAO {
 	
-	private final static Logger logger = Logger.getLogger(UserDAO.class);
+	private final static Logger logger = Logger.getLogger(UserDAO.class.getName());
 	
 	public User findUser(String userName, String pass) {
 		User user = null;
@@ -36,7 +36,7 @@ public class UserDAO {
 			}
 			
 		} catch (Exception e) {
-			logger.error("Ocurrió un error al buscar el usuario", e);
+			logger.log(Level.SEVERE,"Ocurrió un error al buscar el usuario", e);
 		} finally {
 			try {
 				if (resultset != null) {
@@ -51,7 +51,7 @@ public class UserDAO {
 					connection.close();
 				}
 			} catch (Exception e2) {
-				logger.error("Ocurrió un error al cerrar la conexión con la BD", e2);
+				logger.log(Level.SEVERE,"Ocurrió un error al cerrar la conexión con la BD", e2);
 			}
 		}
 		
